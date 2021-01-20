@@ -7,6 +7,7 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include <time.h> 
 
 using namespace std;
 
@@ -29,7 +30,7 @@ void WriteSentenceSlow(string hello) {
 
 int GetBufferWidth()
 {
-	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;
+	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;			// this function reads the buffer of the console size and returns it
 	int bufferWidth, result;
 
 	result = GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &bufferInfo);
@@ -82,28 +83,42 @@ void OutputText(std::string s)
 
 	WriteSentenceSlow(s);
 }
+void firstFateVariable() {
 
+
+}
 
 int main()
 {
     system("color 02");
+	srand(time(NULL));
 	string name;
-	string prologue;
+	string prologue[5];
+	int fateVariable = (rand() % 6) - 0;
 	fstream openprologue;
 
+	cout << fateVariable << endl;
 	openprologue.open("Prologue.txt");
+
 	if (openprologue.good() == true)
 	{
 		while (!openprologue.eof())
 		{
-			getline(openprologue, prologue);
-			OutputText(prologue);
+			for (int i = 0; i <= 4; i++) {
+				getline(openprologue, prologue[i]);
+			}
+			OutputText(prologue[0]);
+
+			cout << "\n\n";
+
+			getline(cin, name);
+			string nametext = "\nSo, your name is " + name + ", huh? Okay, let's get to work, shall we?";
+			WriteSentenceSlow(nametext);
+			cout << "\n\n";
+			OutputText(prologue[1]);
 		}
 	}
-	cout << "\n\n";
-	getline(cin, name);
-	string nametext = "\nSo, your name is " + name + ", huh? Okay, let's get to work, shall we?\n\n";
-	OutputText(nametext);
 	openprologue.close();
+	
 	return 0;
 }
