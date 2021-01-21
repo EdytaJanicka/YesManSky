@@ -83,8 +83,25 @@ void OutputText(std::string s)
 
 	WriteSentenceSlow(s);
 }
-void firstFateVariable() {
+void zeroFateVariable() {
+	fstream openfate0;
+	string fate0[5];
 
+	openfate0.open("Fate0.txt");
+
+	if (openfate0.good())
+	{
+		while (!openfate0.eof())
+		{
+			for (int i = 0; i <= 4; i++) {
+				getline(openfate0, fate0[i]);
+			}
+			OutputText(fate0[0]);
+
+			cout << "\n\n";
+			OutputText(fate0[1]);
+		}
+	}
 
 }
 
@@ -93,31 +110,91 @@ int main()
     system("color 02");
 	srand(time(NULL));
 	string name;
-	string prologue[5];
-	int fateVariable = (rand() % 6) - 0;
-	fstream openprologue;
+	string tCAnswear;
+	string tCA1 = "y";
 
-	cout << fateVariable << endl;
+	string prologue[10];
+	int fateVariable = (rand() % 6) - 0;
+	int money = (rand() % 151) - 0;
+	fstream openprologue;
+	fstream openSaveFile;
+
+
+	//cout << fateVariable <<"  "<< money << endl;
 	openprologue.open("Prologue.txt");
 
-	if (openprologue.good() == true)
+	if (openprologue.good())
 	{
 		while (!openprologue.eof())
 		{
-			for (int i = 0; i <= 4; i++) {
+			for (int i = 0; i <= 9; i++) {
 				getline(openprologue, prologue[i]);
 			}
 			OutputText(prologue[0]);
-
+			cout << "\n";
+			OutputText(prologue[1]);
 			cout << "\n\n";
 
 			getline(cin, name);
+			cout << "\n";
+			OutputText(prologue[0]);
 			string nametext = "\nSo, your name is " + name + ", huh? Okay, let's get to work, shall we?";
 			WriteSentenceSlow(nametext);
 			cout << "\n\n";
-			OutputText(prologue[1]);
+
+			for (int i = 2; i <= 7; i++) {
+				OutputText(prologue[i]);
+				if (i % 2 == 0) {
+					cout << "\n";
+				}else  cout << "\n\n";
+			}
+			
+			do {
+				getline(cin, tCAnswear);
+
+			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			OutputText(prologue[6]);
+			cout << "\n";
+			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
+				OutputText(prologue[8]);
+				cout << "\n\n";
+			}else if(tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos){
+				OutputText(prologue[9]);
+				cout << "\n\n";
+			}
 		}
 	}
+	switch (fateVariable)
+	{
+	case 0:
+		//jakis kod
+		break;
+
+	case 1:
+		//jakis kod
+		break;
+
+	case 2:
+		//jakis kod
+		break;
+
+	case 3:
+		//jakis kod
+		break;
+
+	case 4:
+		//jakis kod
+		break;
+
+	case 5:
+		//jakis kod
+		break;
+	
+	default:
+		//jakis kod
+		break;
+	}
+
 	openprologue.close();
 	
 	return 0;

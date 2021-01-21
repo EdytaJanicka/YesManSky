@@ -1,2 +1,10 @@
+Admiral Gilgamesh
 Good to see you Commander. Let's get this spaceship going. How are you doing anyway? I heard that you were quite busy lately. I've got an interesting quest for ya. But first tell me. What was your name again?
-Meow Meow Meow
+Admiral Gilgamesh
+Okay, so now to bussiness. We are sending you with diplomatic mission to the Constructor. We've got some rumors about some civil disobedience towards our union with Khaji'va race. Your job is to find out what is going on exactly and report back to us. Don't work on your own, understood?
+Admiral Gilgamesh
+I know it's on the other side of the galaxy and getting there can take a while, but try to be as quit as possible. Buckle up, Commander.
+On-board Synthetical Inteligence - Alex
+Captain we discovered a problem with the ship. A forced landing will be required immediately. Do I have your persmission to take control over the ship? (yes/no)
+(-Engaging the autopilot-) Captain I suggest you should lay down. Soon we will arrive our closest destination. I will wake you up. Goodnight sir.
+Captain with all due respect, my protocols are clear. I will have to engage autopilot with or without your permission so i can save crew's lives. I asked out of pure decency. (-Engaging the autopilot-) Soon expected landing will happen. I suggest rest till then.
