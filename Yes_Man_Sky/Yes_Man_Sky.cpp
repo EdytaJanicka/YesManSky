@@ -102,7 +102,6 @@ void zeroFateVariable() {
 			OutputText(fate0[1]);
 		}
 	}
-
 }
 
 int main()
