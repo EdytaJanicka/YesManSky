@@ -1,0 +1,10 @@
+Alex
+Captain. We arrived to Lorem Ipsum Station. I've run diagnostical tests, that have proven Ion Particle Diffuser to be broke. In order to repair ship and get going you need to find and buy this part.
+Where do I find it?
+Apparently this station have a large market area, you can start there, it's right behind the hangar doors. Do you want to take your bag? (yes/no)
+(you take destroyed part from control room and put everything into a bag then you exit the ship, there is only one way out so you proceed to the closest doors)
+(you take destroyed part from control room into your hand and exit the ship, there is only one way out so you proceed to the closest doors)
+Guard
+Hold on a sec! Do you have AllAllaince Pass to enter freely to market area? If no i will have to charge you.
+a) Pay 10 credits fee
+b) Show Pass

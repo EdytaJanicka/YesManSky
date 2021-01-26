@@ -18,7 +18,7 @@ void WriteSentenceSlow(string hello) {
 	while (hello[x] != '\0')
 	{
 		cout << hello[x];
-		Sleep(50);															// making console write letter by letter
+		Sleep(5);															// making console write letter by letter
 
 		if (hello[x] == '.' || hello[x] == '?' || hello[x] == '!') {
 			Sleep(300);													// waiting at the end of the sentence
@@ -83,23 +83,53 @@ void OutputText(std::string s)
 
 	WriteSentenceSlow(s);
 }
-void zeroFateVariable() {
+void zeroFateVariable(string name, int money) {
 	fstream openfate0;
-	string fate0[5];
-
+	string fate0[20];
+	string tCAnswear;
+	bool haveABag;
+	char a_Or_b;
 	openfate0.open("Fate0.txt");
 
 	if (openfate0.good())
 	{
 		while (!openfate0.eof())
 		{
-			for (int i = 0; i <= 4; i++) {
+			for (int i = 0; i <= 9; i++) {
 				getline(openfate0, fate0[i]);
 			}
 			OutputText(fate0[0]);
-
-			cout << "\n\n";
+			cout << "\n";
 			OutputText(fate0[1]);
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			OutputText(fate0[2]);
+			cout << "\n\n";
+			OutputText(fate0[3]);
+			cout << "\n\n";
+			do {
+				getline(cin, tCAnswear);
+
+			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			cout << "\n";
+			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
+				OutputText(fate0[4]);
+				haveABag = true;
+			}
+			else if (tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos) {
+				OutputText(fate0[5]);
+				haveABag = false;
+			}
+			cout << "\n\n";
+			OutputText(fate0[6]);
+			cout << "\n";
+			OutputText(fate0[7]);
+			cout << "\n";
+			OutputText(fate0[8]);
+			cout << "\n";
+			OutputText(fate0[9]);
+			cout << "\n";
 		}
 	}
 }
@@ -113,13 +143,14 @@ int main()
 	string tCA1 = "y";
 
 	string prologue[10];
-	int fateVariable = (rand() % 6) - 0;
-	int money = (rand() % 151) - 0;
+	int fateVariable = (rand() % 1) - 0;
+	int money = (rand() % 151) + 30;
+	int countPlanets = 0;
 	fstream openprologue;
 	fstream openSaveFile;
 
 
-	//cout << fateVariable <<"  "<< money << endl;
+	cout << fateVariable <<"  "<< money << endl;
 	openprologue.open("Prologue.txt");
 
 	if (openprologue.good())
@@ -152,21 +183,35 @@ int main()
 				getline(cin, tCAnswear);
 
 			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			cout << "\n";
 			OutputText(prologue[6]);
 			cout << "\n";
 			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
 				OutputText(prologue[8]);
-				cout << "\n\n";
+				cout << "\n\n\n~ End of Prolog ~\n\n";
 			}else if(tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos){
 				OutputText(prologue[9]);
-				cout << "\n\n";
+				cout << "\n\n\n~ End of Prolog ~\n\n";
 			}
+			//OutputText(prologue[2]);
+			//cout << "Nie dziala\n" << endl;
 		}
 	}
+	openSaveFile.open("Save.txt");
+	if (openSaveFile.good())
+	{
+			openSaveFile << name << endl;
+			openSaveFile << money;
+		
+	}
+	openSaveFile.close();
+
+
+
 	switch (fateVariable)
 	{
 	case 0:
-		//jakis kod
+		zeroFateVariable(name, money);
 		break;
 
 	case 1:
