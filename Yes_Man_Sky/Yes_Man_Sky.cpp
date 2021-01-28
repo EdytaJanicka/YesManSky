@@ -4,11 +4,12 @@
 #include <iostream>
 #include <stdlib.h>
 #include <windows.h>
+#include <winuser.h>
 #include <sstream>
 #include <string>
 #include <fstream>
 #include <time.h> 
-
+#pragma comment(lib, "winmm.lib")
 using namespace std;
 
 void WriteSentenceSlow(string hello) {
@@ -18,10 +19,10 @@ void WriteSentenceSlow(string hello) {
 	while (hello[x] != '\0')
 	{
 		cout << hello[x];
-		Sleep(5);															// making console write letter by letter
+		Sleep(1);										//50					// making console write letter by letter
 
 		if (hello[x] == '.' || hello[x] == '?' || hello[x] == '!') {
-			Sleep(300);													// waiting at the end of the sentence
+			Sleep(3);										//300			// waiting at the end of the sentence
 		}
 		x++;
 	};
@@ -83,19 +84,45 @@ void OutputText(std::string s)
 
 	WriteSentenceSlow(s);
 }
-void zeroFateVariable(string name, int money) {
+
+void AchievementComplete()
+{
+	int msgboxID = MessageBox(
+		NULL,
+		L"You found all the weird fish figures!!!",
+		L"New achievement get!",
+		MB_OK
+	);
+
+}
+
+
+long long factorial(int n)
+{
+	if (n < 2)
+		return 1;				//silnia z 1 to 1 lol
+
+	return n * factorial(n - 1);		//rekurencja
+}
+
+void zeroFateVariable(string name, int money, int fishes, int fate) {
 	fstream openfate0;
-	string fate0[20];
+	string fate0[30];
 	string tCAnswear;
+	string answerB = "My name is Commander " + name + ", and here is my pass.";
+	string answerC = "You buy this part, but you aren't necessarily happy about it. You have only " + to_string(money) + " credit$ in your wallet left.";
+	string textA = "Commander " + name + ", it seems everything is working fine. We may now proceed our journey. I'm prepering engines, soon we will be back in space void.";
 	bool haveABag;
 	char a_Or_b;
 	openfate0.open("Fate0.txt");
 
 	if (openfate0.good())
 	{
+		int weird = (rand() % 2) - 0;
+		cout << weird << endl;
 		while (!openfate0.eof())
 		{
-			for (int i = 0; i <= 9; i++) {
+			for (int i = 0; i <= 29; i++) {
 				getline(openfate0, fate0[i]);
 			}
 			OutputText(fate0[0]);
@@ -124,33 +151,211 @@ void zeroFateVariable(string name, int money) {
 			cout << "\n\n";
 			OutputText(fate0[6]);
 			cout << "\n";
-			OutputText(fate0[7]);
+			OutputText(fate0[7]+" (You have " + to_string(money) +" in your wallet)");
 			cout << "\n";
 			OutputText(fate0[8]);
 			cout << "\n";
 			OutputText(fate0[9]);
 			cout << "\n";
+			do {
+				cin >> a_Or_b;
+
+			} while (a_Or_b != 'a' && a_Or_b != 'b' && a_Or_b != 'A' && a_Or_b != 'B');
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			if (a_Or_b == 'a' || a_Or_b == 'A') {
+				OutputText(fate0[10]);
+				money = money - 10;
+			}
+			else{
+				if (haveABag == false) 
+				{
+					OutputText(fate0[11]);
+					money = money - 10;
+				}
+				else 
+				{
+					OutputText(answerB);
+				}
+			}
+			cout << "\n\n";
+			OutputText(fate0[12]);
+			cout << "\n";
+			OutputText(fate0[13]);
+			cout << "\n\n";
+			OutputText(fate0[14]);
+			cout << "\n\n";
+			OutputText(fate0[15]);
+			cout << "\n";
+			OutputText(fate0[16]);
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			OutputText(fate0[17]);
+			cout << "\n\n";
+			OutputText(fate0[18]);
+			cout << "\n";
+			OutputText(fate0[19] + " (You have " + to_string(money) + " in your wallet)");
+			cout << "\n\n";
+			do {
+				getline(cin, tCAnswear);
+
+			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			cout << "\n";
+			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
+				OutputText(fate0[20]);
+				cout << "\n\n";
+				money = money - 40;
+			}
+			else if (tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos) {
+				money = money - 40;
+				OutputText(fate0[21]);
+				cout << "\n\n";
+				OutputText(fate0[22]);
+				cout << "\n";
+				OutputText(fate0[23]);
+				cout << "\n\n";
+				OutputText(answerC);
+				cout << "\n\n";
+			}
+			OutputText(fate0[24]);
+			cout << "\n\n";
+			do {
+				getline(cin, tCAnswear);
+
+			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			cout << "\n";
+			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
+				fishes++;
+				OutputText(fate0[25]);
+			}
+			//else if (tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos) {
+				//nothing welp, no achievement for you
+			//}
+			cout << "\n\n";
+			OutputText(fate0[26]);
+			cout << "\n\n";
+			OutputText(fate0[0]);
+			cout << "\n";
+			OutputText(textA);
+			cout << "\n\n";
+			OutputText(fate0[27]);
+			cout << "\n\n";
+			OutputText(fate0[28]);
+			cout << "\n";
+			OutputText(fate0[29]);
+			fate = weird;
+
 		}
 	}
 }
 
+void oneFateVariable(string name, int money, int fishes, int fate) {
+	fstream openfate1;
+	string fate1[30];
+	string tCAnswear;
+	string answerB = "My name is Commander " + name + ". Do you by any chance know a programmer who could repair hipernavigation system?.";
+	char a_Or_b;
+
+	int points = 0;
+	int factorialRandom = (rand() % 10) - 0;
+	int firstAnswear;
+	int secondAnswear;
+	int thirdAnswear;
+
+	openfate1.open("Fate1.txt");
+
+	if (openfate1.good())
+	{
+		while (!openfate1.eof())
+		{
+			for (int i = 0; i <= 29; i++) {
+				getline(openfate1, fate1[i]);
+			}
+			OutputText(fate1[0]);
+			cout << "\n";
+			OutputText(fate1[1]);
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			OutputText(fate1[2]);
+			cout << "\n\n";
+			OutputText(fate1[3]);
+			cout << "\n";
+			OutputText(fate1[4]);
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			OutputText(fate1[5]);
+			cout << "\n\n";
+			OutputText(fate1[6]);
+			cout << "\n\n";
+			OutputText(fate1[7]);
+			cout << "\n";
+			OutputText(fate1[8]);
+			cout << "\n\n";
+			OutputText(name);
+			cout << "\n";
+			OutputText("Hello, my name is Commander "+name+" and "+fate1[9]);
+			cout << "\n\n";
+			OutputText(fate1[10]);
+			cout << "\n";
+			OutputText(fate1[11]);
+
+			cout << "\n\n";
+			do {
+				getline(cin, tCAnswear);
+
+			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
+			cout << "\n";
+			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
+				OutputText(fate1[12]);
+				
+			}
+			else if (tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos) {
+				OutputText(fate1[13]);
+				
+			}
+			cout << "\n\n";
+			OutputText(fate1[14]);
+			cout << "\n";
+			OutputText(fate1[15]+ to_string(factorialRandom)+" ?");
+			cin >> factorialRandom;
+
+			fate = (rand() % 2) - 0;
+
+
+		}
+	}
+}
+
+
+
+
 int main()
 {
+	PlaySound(TEXT("spacemusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+	AchievementComplete();
     system("color 02");
 	srand(time(NULL));
 	string name;
+	string question = "Would like to proceed or give up and end this journey here? (yes/no)";
 	string tCAnswear;
+	string tCAnswear1;
 	string tCA1 = "y";
 
 	string prologue[10];
-	int fateVariable = (rand() % 1) - 0;
+	int fateVariable = (rand() % 2) - 0;
+	int fateVariable1 = (rand() % 2) - 0;
 	int money = (rand() % 151) + 30;
 	int countPlanets = 0;
+	int countFishes = 0;
 	fstream openprologue;
 	fstream openSaveFile;
 
 
-	cout << fateVariable <<"  "<< money << endl;
+	cout << fateVariable << "  " << fateVariable1 <<"  "<< money << endl;
 	openprologue.open("Prologue.txt");
 
 	if (openprologue.good())
@@ -206,38 +411,33 @@ int main()
 	}
 	openSaveFile.close();
 
+	do {
 
+		switch (fateVariable)
+		{
+		case 0:
+			zeroFateVariable(name, money, countFishes, fateVariable);
+			break;
 
-	switch (fateVariable)
-	{
-	case 0:
-		zeroFateVariable(name, money);
-		break;
+		case 1:
+			oneFateVariable(name, money, countFishes, fateVariable);
+			break;
 
-	case 1:
-		//jakis kod
-		break;
+		case 2:
+			//twoFateVariable(name, money, countFishes, fateVariable);  //well, game has a potential to be much bigger but i decided to crop it a little bit because apparently writing dry story about aliens, and traveling in space is quite boring
+			break;
 
-	case 2:
-		//jakis kod
-		break;
+		case 3:
+			//threeFateVariable(name, money, countFishes, fateVariable);
+			break;
 
-	case 3:
-		//jakis kod
-		break;
-
-	case 4:
-		//jakis kod
-		break;
-
-	case 5:
-		//jakis kod
-		break;
-	
-	default:
-		//jakis kod
-		break;
-	}
+		}
+		cout << "\n\n";
+		OutputText(question);
+		cout << "\n\n";
+		getline(cin, tCAnswear1);
+		fateVariable = fateVariable1;
+	} while (tCAnswear1 != "no" && tCAnswear1 != "No" && tCAnswear1 != "Nope" && tCAnswear1 != "n");
 
 	openprologue.close();
 	

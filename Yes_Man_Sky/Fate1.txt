@@ -1,0 +1,16 @@
+Alex
+The closest planet I found is Xaardam. It's mostly wasteland although i found a little city on the surface. (Engaging landing protocol.)
+So what was the problem with the ship?
+Alex
+It looks like our hipernavigation system is down we need to find a programmer who will repair errors in the compilation.
+Well, I hope I will find one here.
+(You exit the ship, and you see a stranger alien with one eye looking like he's waiting for you.)
+Alien
+Oi, hiiii, my name is Mitsuki Suki'tsun and I'm wondering what are you doing in this godforgotten planet?
+system in my ship went down, and I'm looking for a programmer that could help me fix it.
+Mitsuki Suki'Tsun
+What a chance! You have a lot of luck Commander! I'm a programmer myself. I've sold my workshop years ago though. It would be nice to repair something once again. Hmmm... Maybe we will play a little game and if you will answer correct to at least 2 out of 3 of my questions i will repair it for free, huh?(yes/no)
+Yeah, why not, that should be fun!
+You are probably only living person on this planet that knows how to handle it anyway. I guess I have to agree.
+Alien
+Okay then. My first question is what is a factorial number out of 

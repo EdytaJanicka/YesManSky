@@ -6,5 +6,25 @@ Apparently this station have a large market area, you can start there, it's righ
 (you take destroyed part from control room into your hand and exit the ship, there is only one way out so you proceed to the closest doors)
 Guard
 Hold on a sec! Do you have AllAllaince Pass to enter freely to market area? If no i will have to charge you.
-a) Pay 10 credits fee
+a) Pay 10 credit$ fee
 b) Show Pass
+I will pay you. Here you have your money.
+(You left your bag in the ship, you don't have a pass.) I will pay...
+Guard
+Hmmmm... You may pass.
+(You pass a guard and enter market pass. Beautiful neons and holograms of space market are shining bright and very advertising. Dozens of people from around this part of galaxy, are participating in this vibrant nightlife of the station. After ignoring all the distractions, you see a spaceship workshop not so far away from your sight. You proceed to the engineer stall.)
+Engineer Vendor
+Hello! Hi, how may I help you?
+Hi, I'm looking for Ion Particle Diffuser part for my ship's engine. Do you have one by chance?
+Engineer Vendor
+Yes, I actually have plenty. You're lucky, we actually have a special discount now. It will be only 40 credit$ for one part. Are you interested? (yes/no)
+Yes, of course! (pay 40 credit$)
+No, the price is too high.
+Alex
+What do you mean too high??? I need this part to work. Buy it!
+(Now when you already have what you came for, you decide to head back to ship. While passing back through the market, your eye catches an interesting fish figure. Would like to grab it? (yes/no))
+(You grab fishy figure)
+(You come back to ship, and succefully install new Ion Particle Diffuser into ship's engine.)
+(You fly off the station, and you are right back at your course to the Constructor. Then the alarm starts.)
+Alex
+Sir, we have another problem. I will find us a closest destination we could land.
