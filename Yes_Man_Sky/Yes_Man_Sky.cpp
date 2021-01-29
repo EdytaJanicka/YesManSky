@@ -1,5 +1,6 @@
 // Yes Man Sky.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
+//ja generalnie przepraszam, ze polowa komentarzy is in English, but i decided to do some in this one and then i got tired halfway	;-;
 //ZANIM PAN ODPALI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! - gra zawiera dzwiek, prosze sobie sciszyc glosnosc ogolna, albo zaraz po odpaleniu sciszyc w mikserze
 #include <iostream>
 #include <stdlib.h>
@@ -9,7 +10,7 @@
 #include <string>
 #include <fstream>
 #include <time.h> 
-#pragma comment(lib, "winmm.lib")
+#pragma comment(lib, "winmm.lib")					//apparently playing music needs this line, but god i wish to know what it actually does
 using namespace std;
 
 void WriteSentenceSlow(string hello) {
@@ -19,10 +20,10 @@ void WriteSentenceSlow(string hello) {
 	while (hello[x] != '\0')
 	{
 		cout << hello[x];
-		Sleep(1);										//50					// making console write letter by letter
+		Sleep(40);										//40					// making console write letter by letter
 
 		if (hello[x] == '.' || hello[x] == '?' || hello[x] == '!') {
-			Sleep(3);										//300			// waiting at the end of the sentence
+			Sleep(300);										//300			// waiting at the end of the sentence
 		}
 		x++;
 	};
@@ -34,7 +35,7 @@ int GetBufferWidth()
 	CONSOLE_SCREEN_BUFFER_INFO bufferInfo;			// this function reads the buffer of the console size and returns it
 	int bufferWidth, result;
 
-	result = GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &bufferInfo);
+	result = GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &bufferInfo);				//wskaznik na buffer
 
 	if (result)
 	{
@@ -45,8 +46,8 @@ int GetBufferWidth()
 }
 
 
-void OutputText(std::string s)
-{
+void OutputText(std::string s)										//this function is my favourite, it takes your string and check if its bigger that a buffer of our console,
+{																	// but don't resize it while playing cause it wont look very good
 	int bufferWidth = GetBufferWidth();
 
 	for (unsigned int i = 1; i <= s.length(); i++)
@@ -85,11 +86,11 @@ void OutputText(std::string s)
 	WriteSentenceSlow(s);
 }
 
-int countFishes = 0;
+int countFishes = 0;										//countsishes jest zmienna globalna bo tak jest latwiej
 
 void AchievementComplete()
 {
-	int msgboxID = MessageBox(
+	int msgboxID = MessageBox(											//definiuje jak wyglada i z czego sklada sie popupowe okienko
 		NULL,
 		L"You found all the weird fish figures!!!",
 		L"New achievement get!",
@@ -104,13 +105,13 @@ long long factorial(int n)
 	if (n < 2)
 		return 1;				//silnia z 1 to 1 lol
 
-	return n * factorial(n - 1);		//rekurencja
+	return n * factorial(n - 1);												//silnia z uzyciem rekurencji
 }
 
 void zeroFateVariable(string name, int money, int fishes, int fate) {
 	fstream openfate0;
 	string fate0[30];
-	string tCAnswear;
+	string tCAnswear;																//wiecej zmiennych
 	string answerB = "My name is Commander " + name + ", and here is my pass.";
 	string answerC = "You buy this part, but you aren't necessarily happy about it. You have only " + to_string(money) + " credit$ in your wallet left.";
 	string textA = "Commander " + name + ", it seems everything is working fine. We may now proceed our journey. I'm prepering engines, soon we will be back in space void.";
@@ -162,12 +163,12 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 			do {
 				cin >> a_Or_b;
 
-			} while (a_Or_b != 'a' && a_Or_b != 'b' && a_Or_b != 'A' && a_Or_b != 'B');
+			} while (a_Or_b != 'a' && a_Or_b != 'b' && a_Or_b != 'A' && a_Or_b != 'B');				//pytanie zamkniete a/b, btw petla
 			cout << "\n";
 			OutputText(name);
 			cout << "\n";
 			if (a_Or_b == 'a' || a_Or_b == 'A') {
-				OutputText(fate0[10]);
+				OutputText(fate0[10]);									//else i if
 				money = money - 10;
 			}
 			else{
@@ -232,7 +233,7 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 				countFishes++;
 				OutputText(fate0[25]);
 				if (countFishes == 2) {
-					cout << countFishes << endl;
+					
 					AchievementComplete();
 				}
 			}
@@ -263,7 +264,7 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 void oneFateVariable(string name, int money, int fishes, int fate) {
 	fstream openfate1;
 	string fate1[30];
-	string tCAnswear;
+	string tCAnswear;											//zmienne
 	string answerB = "My name is Commander " + name + ". Do you by any chance know a programmer who could repair hipernavigation system?.";
 	char a_Or_b;
 
@@ -373,7 +374,7 @@ void oneFateVariable(string name, int money, int fishes, int fate) {
 				cin >> thirdAnswear;
 				cout << "\n";
 				if (thirdAnswear == 25) {
-					points = points + 2;
+					points = points + 2;						//punkty oceniajace gracza, jak za poprawne odpowiedzi dostanie dotatecznie duzo to dostanie przedmiot
 					OutputText(fate1[16]);
 
 				}
@@ -402,7 +403,7 @@ void oneFateVariable(string name, int money, int fishes, int fate) {
 				OutputText(fate1[23]);
 				countFishes++;
 				if (countFishes == 2) {
-						cout << countFishes << endl;
+						
 						AchievementComplete();
 					}
 			}
@@ -438,11 +439,13 @@ void Title() {
 		{'v','v','v','v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v'}
 	};
 
+	//tablica 2D
+
 	for (int i = 0; i < 7; i++)
 	{
 		
 		for (int j = 0; j < 40; j++) {
-			cout << title[i][j]<<"  ";
+			cout << title[i][j]<<"  ";						//zagniezdzona petla for
 		}
 		cout << endl;
 	}
@@ -451,10 +454,10 @@ void Title() {
 
 int main()
 {
-	Title();
+	Title();														//ekran tytulowy
 	cout << "\n\n";
-	PlaySound(TEXT("spacemusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-    system("color 02");
+	PlaySound(TEXT("spacemusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);					//muzyczka
+    system("color 02");																			//zmiana koloru konsoli
 	srand(time(NULL));
 	string name;
 	string question = "Would like to proceed or give up and end this journey here? (yes/no)";
@@ -464,20 +467,19 @@ int main()
 
 	string prologue[10];
 	int fateVariable = (rand() % 2) - 0;
-	int fateVariable1 = (rand() % 2) - 0;
-	int money = (rand() % 151) + 30;
+	int money = (rand() % 151) + 50;
 	int countPlanets = 0;
 	fstream openprologue;
 	fstream openSaveFile;
 
 
-	cout << fateVariable << "  " << fateVariable1 <<"  "<< money << endl;
+	//cout << fateVariable  <<"  "<< money << endl;    // sprawdzalam sobie
 	openprologue.open("Prologue.txt");
 
 	if (openprologue.good())
 	{
 		while (!openprologue.eof())
-		{
+		{											//odczyt danych z pliku
 			for (int i = 0; i <= 9; i++) {
 				getline(openprologue, prologue[i]);
 			}
@@ -486,7 +488,7 @@ int main()
 			OutputText(prologue[1]);
 			cout << "\n\n";
 
-			getline(cin, name);
+			getline(cin, name);						//pytanie o imie
 			cout << "\n";
 			OutputText(prologue[0]);
 			string nametext = "\nSo, your name is " + name + ", huh? Okay, let's get to work, shall we?";
@@ -519,7 +521,7 @@ int main()
 		}
 	}
 	openSaveFile.open("Save.txt");
-	if (openSaveFile.good())
+	if (openSaveFile.good())					//zapis do pliku, jak mielismy na imie i ile mielismy pieniedzy w ostatniej grze
 	{
 			openSaveFile << name << endl;
 			openSaveFile << money;
@@ -542,9 +544,9 @@ int main()
 			break;
 
 		case 2:
-			//twoFateVariable(name, money, countFishes, fateVariable);  //well, game has a potential to be much bigger but i decided to crop it a little bit because apparently writing dry story about aliens, and traveling in space is quite boring
+			//twoFateVariable(name, money, countFishes, fateVariable); 
 			break;
-
+												//well, game has a potential to be much bigger but i decided to crop it a little bit because apparently writing dry story about aliens, and traveling in space is quite boring
 		case 3:
 			//threeFateVariable(name, money, countFishes, fateVariable);
 			break;
