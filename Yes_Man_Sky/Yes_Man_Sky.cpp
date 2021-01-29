@@ -1,6 +1,6 @@
 // Yes Man Sky.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+//ZANIM PAN ODPALI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! - gra zawiera dzwiek, prosze sobie sciszyc glosnosc ogolna, albo zaraz po odpaleniu sciszyc w mikserze
 #include <iostream>
 #include <stdlib.h>
 #include <windows.h>
@@ -85,6 +85,8 @@ void OutputText(std::string s)
 	WriteSentenceSlow(s);
 }
 
+int countFishes = 0;
+
 void AchievementComplete()
 {
 	int msgboxID = MessageBox(
@@ -118,8 +120,8 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 
 	if (openfate0.good())
 	{
-		int weird = (rand() % 2) - 0;
-		cout << weird << endl;
+		//int weird = (rand() % 2) - 0;
+		//cout << weird << endl;
 		while (!openfate0.eof())
 		{
 			for (int i = 0; i <= 29; i++) {
@@ -156,12 +158,12 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 			OutputText(fate0[8]);
 			cout << "\n";
 			OutputText(fate0[9]);
-			cout << "\n";
+			cout << "\n\n";
 			do {
 				cin >> a_Or_b;
 
 			} while (a_Or_b != 'a' && a_Or_b != 'b' && a_Or_b != 'A' && a_Or_b != 'B');
-			cout << "\n\n";
+			cout << "\n";
 			OutputText(name);
 			cout << "\n";
 			if (a_Or_b == 'a' || a_Or_b == 'A') {
@@ -227,8 +229,12 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 			} while (tCAnswear != "yes" && tCAnswear != "no" && tCAnswear != "Yes" && tCAnswear != "No" && tCAnswear != "Nope" && tCAnswear != "Yeah" && tCAnswear != "y" && tCAnswear != "n");
 			cout << "\n";
 			if (tCAnswear.find("y") != std::string::npos || tCAnswear.find("Y") != std::string::npos) {
-				fishes++;
+				countFishes++;
 				OutputText(fate0[25]);
+				if (countFishes == 2) {
+					cout << countFishes << endl;
+					AchievementComplete();
+				}
 			}
 			//else if (tCAnswear.find("n") != std::string::npos || tCAnswear.find("N") != std::string::npos) {
 				//nothing welp, no achievement for you
@@ -245,10 +251,13 @@ void zeroFateVariable(string name, int money, int fishes, int fate) {
 			OutputText(fate0[28]);
 			cout << "\n";
 			OutputText(fate0[29]);
-			fate = weird;
+			
+			//fate = weird;
 
 		}
 	}
+	openfate0.close();
+
 }
 
 void oneFateVariable(string name, int money, int fishes, int fate) {
@@ -318,25 +327,133 @@ void oneFateVariable(string name, int money, int fishes, int fate) {
 				
 			}
 			cout << "\n\n";
-			OutputText(fate1[14]);
+			
+			do {
+				OutputText(fate1[14]);
+				cout << "\n";
+				OutputText(fate1[15] + to_string(factorialRandom) + " ?");
+				cout << "\n\n";
+				cin >> firstAnswear;
+				cout << "\n";
+
+				if (firstAnswear == factorial(factorialRandom)) {
+					points = points + 2;
+					OutputText(fate1[16]);
+
+				}
+				else if (firstAnswear == factorial(factorialRandom) + 1 || firstAnswear == factorial(factorialRandom) - 1)
+				{
+					points = points + 1;
+					OutputText(fate1[17]);
+				}
+				else {
+					OutputText(fate1[18]);
+				}
+				cout << "\n\n";
+				OutputText(fate1[19]);
+				cout << "\n\n";
+				cin >> secondAnswear;
+				cout << "\n";
+				if (secondAnswear == 4) {
+					points = points + 2;
+					OutputText(fate1[16]);
+
+				}
+				else if (secondAnswear == 3 || secondAnswear == 5)
+				{
+					points = points + 1;
+					OutputText(fate1[17]);
+				}
+				else {
+					OutputText(fate1[18]);
+				}
+				cout << "\n\n";
+				OutputText(fate1[20]);
+				cout << "\n\n";
+				cin >> thirdAnswear;
+				cout << "\n";
+				if (thirdAnswear == 25) {
+					points = points + 2;
+					OutputText(fate1[16]);
+
+				}
+				else if (thirdAnswear == 24 || thirdAnswear == 26)
+				{
+					points = points + 1;
+					OutputText(fate1[17]);
+				}
+				else {
+					OutputText(fate1[18]);
+				}
+				cout << "\n\n";
+				if (points < 3) {
+					OutputText(fate1[14]);
+					cout << "\n";
+					OutputText(fate1[21]);
+					points = 0;
+					cout << "\n\n";
+					
+				}
+				
+			} while (points < 3);
+			if (points == 6) {
+				OutputText(fate1[22]);
+				cout << "\n";
+				OutputText(fate1[23]);
+				countFishes++;
+				if (countFishes == 2) {
+						cout << countFishes << endl;
+						AchievementComplete();
+					}
+			}
+			else{
+				OutputText(fate1[22]);
+				cout << "\n";
+				OutputText(fate1[24]);
+				
+			}
+			cout << "\n\n";
+			OutputText(fate1[25]);
+			cout << "\n\n";
+			OutputText(fate1[26]);
 			cout << "\n";
-			OutputText(fate1[15]+ to_string(factorialRandom)+" ?");
-			cin >> factorialRandom;
+			OutputText(fate1[27]);
 
-			fate = (rand() % 2) - 0;
-
+			//fate = (rand() % 2) - 0;
 
 		}
 	}
+	openfate1.close();
+
 }
+void Title() {
+	char title[7][40] =
+	{
+		{'^','^','^','^','^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^'},
+		{'^','^','^','^','^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^'},
+		{'^','^','^','^','^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', 'Y', 'E', 'S', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^', '^'},
+		{'-','-','-','-','-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', 'M', 'A', 'N', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'},
+		{'v','v','v','v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'S', 'K', 'Y', 'v', 'v', 'v', 'v', 'v', 'v', 'v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v'},
+		{'v','v','v','v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v'},
+		{'v','v','v','v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v','v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v', 'v'}
+	};
 
+	for (int i = 0; i < 7; i++)
+	{
+		
+		for (int j = 0; j < 40; j++) {
+			cout << title[i][j]<<"  ";
+		}
+		cout << endl;
+	}
 
-
+}
 
 int main()
 {
+	Title();
+	cout << "\n\n";
 	PlaySound(TEXT("spacemusic.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-	AchievementComplete();
     system("color 02");
 	srand(time(NULL));
 	string name;
@@ -350,7 +467,6 @@ int main()
 	int fateVariable1 = (rand() % 2) - 0;
 	int money = (rand() % 151) + 30;
 	int countPlanets = 0;
-	int countFishes = 0;
 	fstream openprologue;
 	fstream openSaveFile;
 
@@ -413,7 +529,7 @@ int main()
 
 	do {
 
-		switch (fateVariable)
+		switch (fateVariable)													//switch, troche maly ale dziala
 		{
 		case 0:
 			zeroFateVariable(name, money, countFishes, fateVariable);
@@ -421,6 +537,8 @@ int main()
 
 		case 1:
 			oneFateVariable(name, money, countFishes, fateVariable);
+			
+			getline(cin, tCAnswear1);		//jakie to jest bez sensu i swear to god, przelatuje mi case1 przez getline tam nizej i go ignoruje, a w ten sposob dziala jakims cudem wtf????????????
 			break;
 
 		case 2:
@@ -436,9 +554,14 @@ int main()
 		OutputText(question);
 		cout << "\n\n";
 		getline(cin, tCAnswear1);
-		fateVariable = fateVariable1;
-	} while (tCAnswear1 != "no" && tCAnswear1 != "No" && tCAnswear1 != "Nope" && tCAnswear1 != "n");
 
+		if (fateVariable == 0) {
+			fateVariable++;
+		}else if (fateVariable == 1) fateVariable--;
+
+
+	} while (tCAnswear1 != "no" && tCAnswear1 != "No" && tCAnswear1 != "Nope" && tCAnswear1 != "n");
+	OutputText("You coward! You abandoned your quest and Constructor have been destroyed! You are a disgrace to AllAliance Commandor...");
 	openprologue.close();
 	
 	return 0;

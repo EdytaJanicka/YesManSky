@@ -12,5 +12,17 @@ Mitsuki Suki'Tsun
 What a chance! You have a lot of luck Commander! I'm a programmer myself. I've sold my workshop years ago though. It would be nice to repair something once again. Hmmm... Maybe we will play a little game and if you will answer correct to at least 2 out of 3 of my questions i will repair it for free, huh?(yes/no)
 Yeah, why not, that should be fun!
 You are probably only living person on this planet that knows how to handle it anyway. I guess I have to agree.
-Alien
-Okay then. My first question is what is a factorial number out of 
+Mitsuki Suki'Tsun
+Okay then. My first question is what is a factorial number out of
+That is a correct answear!
+You were close...
+Unfortunately not at all
+My second question is how much is 2 + 2?
+My last question is how much is 5 * 5?
+Would you want to try again?
+Mitsuki Suki'Tsun
+You answeared correctly to all of my questions! I will give you now this fish figure and repair your navigation system.
+Well, you were close but i will repair your ship anyway.
+(Mitsuki Suki'Tsun proceed to your ship and after a while he come back to you with a big smile and good news. You do a little test and start engines so you can proceed your journey through space void.)
+Alex
+Captain I've run a little test and it shows that there is something wrong with the ship. I will look for the closest place we could land.
